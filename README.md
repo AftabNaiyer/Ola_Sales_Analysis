@@ -2,116 +2,121 @@
 
 ## 🚀 Project Overview
 
-This project is a comprehensive analysis of Ola ride data to gain actionable insights that can enhance operational efficiency, service quality, and revenue generation. The analysis covers booking trends, cancellations, revenue patterns, and customer satisfaction.
+This project analyzes Ola ride data to find useful insights that can help improve operations, service quality, and revenue. The focus is on booking trends, cancellations, revenue patterns, and customer satisfaction.
 
 ## 🧑‍💻 Problem Statement
 
-Ola is a leading ride-hailing service that provides a variety of vehicle options and payment methods. Despite its success, the platform faces challenges such as:
+Ola, a ride-hailing service, faces challenges such as:
 
-- High ride cancellation rates by both customers and drivers.
-- Identifying the most and least preferred vehicle types.
-- Understanding revenue trends based on ride distance, fare, and payment methods.
-- Assessing customer and driver ratings to gauge service quality.
+- High ride cancellations by both customers and drivers.
+- Understanding which vehicle types are preferred.
+- Tracking revenue based on distance, fare, and payment methods.
+- Evaluating customer and driver ratings for service quality.
 
 ## 🎯 Objectives
 
-- Analyze and identify the major causes of ride cancellations.
-- Evaluate vehicle type popularity and performance.
-- Assess revenue patterns across different metrics.
-- Examine customer and driver ratings for service quality improvement.
-- Provide actionable recommendations to mitigate cancellations and enhance customer satisfaction.
+- Find reasons for ride cancellations.
+- Identify the most and least popular vehicle types.
+- Analyze revenue trends.
+- Evaluate customer and driver ratings.
+- Provide suggestions for reducing cancellations and improving service.
 
 ## 📊 Data Overview
 
-The dataset contains 103,024 ride records and includes the following information:
+The dataset includes 103,024 ride records with details like:
 
-- **Booking Status:** Whether the ride was completed or canceled.
-- **Vehicle Type:** Includes categories like Mini, Prime Sedan, Prime SUV, eBike, etc.
-- **Booking Value:** Fare charged per ride.
-- **Payment Method:** Cash, UPI, Credit Card, Debit Card.
-- **Ride Distance:** Total distance covered in each trip.
-- **Driver & Customer Ratings:** Feedback scores.
-- **Cancellation Reasons:** Reasons provided by customers or drivers.
+- **Booking Status**: Completed or Canceled.
+- **Vehicle Type**: Mini, Prime Sedan, Prime SUV, eBike, etc.
+- **Booking Value**: Fare charged per ride.
+- **Payment Method**: Cash, UPI, Credit Card, Debit Card.
+- **Ride Distance**: Total trip distance.
+- **Driver & Customer Ratings**: Feedback scores.
+- **Cancellation Reasons**: Provided by customers or drivers.
 
 ## 📈 Key Performance Indicators (KPIs)
 
-- **Cancellation Rate:** Analyze cancellation rates and identify underlying causes.
-- **Revenue Analysis:** Assess total revenue and average fare per ride.
-- **Ride Distance Insights:** Correlate ride distance with booking value.
-- **Payment Trends:** Analyze customer preferences for payment methods.
-- **Customer Satisfaction:** Evaluate rating trends for service improvements.
+- **Cancellation Rate**: Track ride cancellations and reasons.
+- **Revenue Analysis**: Measure total revenue and average fare per ride.
+- **Ride Distance Insights**: Study the effect of ride distance on revenue.
+- **Payment Trends**: Identify customer payment preferences.
+- **Customer Satisfaction**: Analyze rating trends for service improvement.
+
+## 📂 Dataset Structure
+
+- **Raw Data**: Ola_bookings.csv (Original data)
+- **Processed Data**: Cleaned and analyzed in Power BI.
+- **Domain Knowledge**: Domain_Knowledge.docx
+- **Problem Statement**: Problem_Statement.docx
+- **SQL Queries**: ola_sql_query.sql
+- **Power BI Report**: ola_analysis.pbix
 
 ## 📌 Analysis Process
 
-### **Step 1: Data Cleaning and Management (Excel)**
+1. **Data Cleaning (Excel)**
+    - Fixed missing values and removed duplicates.
+    - Formatted data for further analysis.
 
-- Performed initial data cleaning and formatting using **Excel**.
-- Handled missing values, removed duplicates, and ensured data consistency.
+2. **Data Analysis (SQL)**
+    - Ran SQL queries to extract useful insights.
+    - Filtered data to analyze cancellations, revenue, and customer behavior.
 
-### **Step 2: Data Extraction and Transformation (SQL)**
-
-- Executed SQL queries to perform data extraction and generate actionable insights.
-- Applied transformations to analyze booking status, revenue trends, and customer behavior.
-
-### **Step 3: Visualization and Dashboard Creation (Power BI)**
-
-- Developed interactive dashboards using **Power BI** for visual representation.
-- Incorporated DAX functions to calculate essential metrics.
+3. **Visualization (Power BI)**
+    - Created dashboards using Power BI.
+    - Used DAX functions for calculating key metrics.
 
 ## 📊 Dashboards Overview
 
 ### **1. Overall Dashboard**
 ![Overall Dashboard](Images/Overall.png)
 
-- Displays key performance metrics like total bookings, completed vs. canceled rides, and total revenue.
-- Provides a snapshot of Ola's operational efficiency.
+- Shows total bookings, completed vs. canceled rides, and total revenue.
+- Provides a quick view of operational performance.
 
 ### **2. Vehicle Type Dashboard**
 ![Vehicle Type Dashboard](Images/VehicleType.png)
 
-- Compares ride volume, revenue contribution, and customer preference by vehicle type.
-- Helps identify high-performing vehicle categories.
+- Displays ride volume and revenue by vehicle type.
+- Identifies which vehicle types are most profitable.
 
 ### **3. Revenue Dashboard**
 ![Revenue Dashboard](Images/Revenue.png)
 
-- Evaluates revenue patterns based on ride distance and payment methods.
-- Identifies the most profitable segments.
+- Analyzes revenue by ride distance and payment methods.
+- Helps find the most profitable segments.
 
 ### **4. Cancellation Dashboard**
 ![Cancellation Dashboard](Images/Cancellation.png)
 
-- Analyzes ride cancellations, highlighting customer and driver cancellation reasons.
-- Provides insights to reduce cancellations and improve service reliability.
+- Studies cancellation reasons.
+- Provides actionable insights to reduce cancellations.
 
 ### **5. Ratings Dashboard**
 ![Ratings Dashboard](Images/Ratings.png)
 
-- Evaluates driver and customer ratings to assess service quality.
-- Identifies common complaints and suggests improvements.
+- Examines driver and customer ratings.
+- Identifies areas for service improvement.
 
 ## 📊 DAX Functions Used
 
-In the **Power BI** dashboards, the following **DAX functions** were used for calculated measures and visual insights:
+These DAX functions were used in Power BI to calculate metrics:
 
-- `CanceledBookings = CALCULATE(COUNTROWS(Ola_bookings), Ola_bookings[Booking_Status] IN {"Canceled by Driver", "Canceled by Customer"})`
-- `CanceledPercentage = DIVIDE([CanceledBookings], [TotalBookings], 0)`
-- `TotalBookings = COUNTROWS(Ola_bookings)`
+```dax
+CanceledBookings = CALCULATE(COUNTROWS(Ola_bookings), Ola_bookings[Booking_Status] IN {"Canceled by Driver", "Canceled by Customer"})
+CanceledPercentage = DIVIDE([CanceledBookings], [TotalBookings], 0)
+TotalBookings = COUNTROWS(Ola_bookings)
+```
 
 ## 🛠️ Tools Used
 
-1. **Excel**: For data cleaning and management.
-2. **SQL**: For data extraction and transformation.
-3. **Power BI**: For interactive visualizations and dashboards.
+1. **Excel**: Data cleaning and management.
+2. **SQL**: Data extraction and analysis.
+3. **Power BI**: Dashboard visualization.
 
-## 📥 Installation & Setup
+## 📥 How to Run the Project
 
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/username/ola-ride-analysis.git
-   ```
-2. Open the `.pbix` file using **Power BI** to view the dashboards.
-3. Execute SQL queries from `ola_sql_query.sql` to extract data.
-
-
-
+    ```bash
+    git clone https://github.com/username/ola-ride-analysis.git
+    ```
+2. Open the `.pbix` file using Power BI.
+3. Execute SQL queries from `ola_sql_query.sql` using SQL Server Management Studio (SSMS).
